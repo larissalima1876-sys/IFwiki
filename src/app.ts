@@ -8,6 +8,7 @@ import lugarRoutes from "./routes/Lugar.routes";
 import recomendacaoRoutes from "./routes/Recomendacao.routes";
 import eventoRoutes from "./routes/Evento.routes";
 import setorRoutes from "./routes/Setor.routes";
+import eventoSetorRoutes from "./routes/EventoSetor.routes";
 
 import { errorHandler } from "./middlewares/errorHandler";
 
@@ -29,6 +30,7 @@ app.use("/lugares", lugarRoutes);
 app.use("/recomendacoes", recomendacaoRoutes);
 app.use("/eventos", eventoRoutes);
 app.use("/setores", setorRoutes);
+app.use("/eventos-setores", eventoSetorRoutes);
 
 app.use(errorHandler);
 
