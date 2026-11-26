@@ -1,6 +1,6 @@
 
 import { prisma } from "../lib/prisma";
-import { AppError } from "../utils/AppError";
+import { AppError } from "../utils/appError";
 
 interface CriarCurso {
   nome: string;

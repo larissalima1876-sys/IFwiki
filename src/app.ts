@@ -9,18 +9,14 @@ import recomendacaoRoutes from "./routes/Recomendacao.routes";
 import eventoRoutes from "./routes/Evento.routes";
 import setorRoutes from "./routes/Setor.routes";
 import eventoSetorRoutes from "./routes/EventoSetor.routes";
+import arquivoRoutes from "./routes/Arquivo.routes";
+import historiaRoutes from "./routes/Historia.routes";
 
 import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
 app.use(express.json());
-
-app.get("/task", (request: Request, response: Response) => {
-  return response.status(200).json({
-    tasks: [{ id: 1, name: "fazer trabalho", done: false }],
-  });
-});
 
 app.use("/paginas-cursos", paginaCursoRoutes);
 app.use("/categorias", categoriaRoutes);
@@ -31,6 +27,8 @@ app.use("/recomendacoes", recomendacaoRoutes);
 app.use("/eventos", eventoRoutes);
 app.use("/setores", setorRoutes);
 app.use("/eventos-setores", eventoSetorRoutes);
+app.use("/arquivos", arquivoRoutes);
+app.use("/historias", historiaRoutes);
 
 app.use(errorHandler);
 

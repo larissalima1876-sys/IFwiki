@@ -1,5 +1,5 @@
 import { prisma } from "../lib/prisma";
-import { AppError } from "../utils/AppError";
+import { AppError } from "../utils/appError";
 
 interface CriarEventoSetor {
   fk_id_evento: number;

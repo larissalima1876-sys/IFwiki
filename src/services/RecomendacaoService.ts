@@ -1,5 +1,5 @@
 import { prisma } from "../lib/prisma";
-import { AppError } from "../utils/AppError";
+import { AppError } from "../utils/appError";
 
 interface CriarRecomendacao {
   avaliacao: number;
@@ -67,13 +67,20 @@ export class RecomendacaoService {
   }
 
   async listar() {
-    return await prisma.recomendacao.findMany({
-      include: {
-        usuario: true,
-        lugar: true,
+  return await prisma.recomendacao.findMany({
+    include: {
+      usuario: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          tipo: true,
+        },
       },
-    });
-  }
+      lugar: true,
+    },
+  });
+}
 
   async atualizar(
     id: number,
