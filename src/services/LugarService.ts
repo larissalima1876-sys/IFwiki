@@ -1,6 +1,5 @@
-
 import { prisma } from "../lib/prisma";
-import { AppError } from "../utils/AppError";
+import { AppError } from "../utils/appError";
 
 interface CriarLugar {
   nome: string;
@@ -56,7 +55,14 @@ export class LugarService {
   async listar() {
     return await prisma.lugar.findMany({
       include: {
-        usuario: true,
+        usuario: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            tipo: true,
+          },
+        },
       },
     });
   }

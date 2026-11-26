@@ -1,5 +1,5 @@
 import { prisma } from "../lib/prisma";
-import { AppError } from "../utils/AppError";
+import { AppError } from "../utils/appError";
 
 interface CriarSetor {
   descricao: string;
@@ -35,7 +35,14 @@ export class SetorService {
   async listar() {
     return await prisma.setor.findMany({
       include: {
-        usuario: true,
+        usuario: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            tipo: true,
+          },
+        },
         eventos: true,
       },
     });
